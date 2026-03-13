@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Summit 2026 | Scanner Cyber OG</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            transition: background-color 0.4s, color 0.4s;
+        }
+
+        /* DARK MODE - Imeboreshwa */
+        .dark-mode { background-color: #0f172a !important; color: #f1f5f9 !important; }
+        .dark-mode nav { background-color: rgba(15, 23, 42, 0.95) !important; border-color: #1e293b !important; }
+        .dark-mode .bg-white { background-color: #1e293b !important; color: white !important; border-color: #334155 !important; }
+        .dark-mode .bg-slate-100 { background-color: #111827 !important; }
+        .dark-mode .text-slate-500, .dark-mode .text-slate-400 { color: #94a3b8 !important; }
+        .dark-mode input { background-color: #0f172a !important; border-color: #334155 !important; color: white; }
+
+        .hero-gradient { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); }
+
+        /* SPEAKER BOXES - Makubwa na ya kuvutia */
+        .speaker-img-container {
+            width: 100%;
+            height: 500px; 
+            border-radius: 2.5rem;
+            overflow: hidden;
+            border: 6px solid #6366f1;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+        }
+        .speaker-img-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .speaker-img-container:hover img { transform: scale(1.08); }
+
+        .scanner-logo {
+            background: linear-gradient(to right, #4f46e5, #9333ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-extrabold tracking-tighter text-indigo-700">TECH<span class="text-slate-900 dark:text-white">SUMMIT</span></h1>
+            
+            <div class="flex items-center gap-4">
+                <div class="hidden md:flex gap-8 text-sm font-semibold tracking-wide mr-4">
+                    <a href="#about" id="nav-about" class="hover:text-indigo-600 transition">KUHUSU</a>
+                    <a href="#schedule" id="nav-schedule" class="hover:text-indigo-600 transition">RATIBA</a>
+                    <a href="#speakers" id="nav-speakers" class="hover:text-indigo-600 transition">WASEMAJI</a>
+                </div>
+                <button onclick="toggleLang()" class="bg-indigo-600 text-white text-xs font-bold px-4 py-2 rounded-lg active:scale-90 transition shadow-md">
+                    <span id="lang-btn-text">ENG</span>
+                </button>
+                <button onclick="toggleTheme()" class="bg-slate-100 dark:bg-slate-800 p-2 rounded-lg hover:bg-indigo-100 transition active:scale-90 shadow-md">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-gradient pt-40 pb-24 px-6 text-white text-center">
+        <div class="max-w-4xl mx-auto">
+            <span class="bg-indigo-500/30 text-indigo-200 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest" id="hero-tag">Machi 14, 2026 • Main Hall</span>
+            <h2 id="hero-title" class="text-5xl md:text-7xl font-extrabold my-6 leading-tight">Mustakabali wa Ubunifu wa Dijitali</h2>
+            <p id="hero-desc" class="text-lg text-indigo-100 mb-10 max-w-2xl mx-auto">Jiunge na wataalamu wa teknolojia na wanafunzi wabunifu katika kongamano kubwa la mwaka chuoni kwetu.</p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#register" id="hero-btn-reg" class="bg-white text-indigo-900 px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl transition">Anza Usajili Sasa</a>
+                <a href="#schedule" id="hero-btn-sch" class="border border-white/30 px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition">Angalia Ratiba</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+        <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100">
+            <i class="fas fa-calendar-day text-3xl text-indigo-600 mb-4"></i>
+            <h3 class="text-xl font-bold mb-2" id="info-date-t">Tarehe</h3>
+            <p class="text-slate-500" id="info-date-d">Jumamosi, Machi 14, 2026 kuanzia saa 2:00 asubuhi mpaka jioni.</p>
+        </div>
+        <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100">
+            <i class="fas fa-map-marker-alt text-3xl text-indigo-600 mb-4"></i>
+            <h3 class="text-xl font-bold mb-2" id="info-venue-t">Mahali</h3>
+            <p class="text-slate-500" id="info-venue-d">Ukumbi wa Mikutano (Main Hall).</p>
+        </div>
+        <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100">
+            <i class="fas fa-users text-3xl text-indigo-600 mb-4"></i>
+            <h3 class="text-xl font-bold mb-2" id="info-part-t">Washiriki</h3>
+            <p class="text-slate-500" id="info-part-d">Wanafunzi, Wahadhiri, na wadau wote wa teknolojia na biashara.</p>
+        </div>
+    </section>
+
+    <section id="speakers" class="py-20 max-w-6xl mx-auto px-6">
+        <h2 class="text-4xl font-extrabold mb-12 text-center" id="spk-title">Wasemaji Wetu</h2>
+        <div class="grid md:grid-cols-2 gap-16">
+            <div class="text-center">
+                <div class="speaker-img-container mb-6">
+                    <img src="sunday.png" alt="Scanner OG" onerror="this.src='https://via.placeholder.com/600x800?text=Scanner+OG'">
+                </div>
+                <h4 class="text-3xl font-bold">Scanner OG</h4>
+                <p class="text-indigo-600 font-bold text-xl mb-2">Cyber Security Expert</p>
+                <p class="text-slate-500 max-w-md mx-auto" id="spk-1-desc">Mbobezi katika masuala ya mifumo na usalama wa kimtandao.</p>
+            </div>
+            <div class="text-center">
+                <div class="speaker-img-container mb-6">
+                    <img src="suncity.png" alt="Glory Alfa" onerror="this.src='https://via.placeholder.com/600x800?text=Glory+Alfa'">
+                </div>
+                <h4 class="text-3xl font-bold">Glory Alfa</h4>
+                <p class="text-indigo-600 font-bold text-xl mb-2">Product Designer</p>
+                <p class="text-slate-500 max-w-md mx-auto" id="spk-2-desc">Mbunifu wa mifumo inayorahisisha maisha ya mtumiaji wa kawaida.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="schedule" class="py-20 bg-slate-100 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-extrabold mb-12 text-center" id="sch-title">Ratiba ya Shughuli</h2>
+            <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200">
+                <div class="p-6 border-b border-slate-100 flex justify-between items-center">
+                    <div><span class="text-indigo-600 font-bold">08:00 - 09:00</span><h4 class="font-bold text-lg" id="sch-1">Kuwasili na Kujisajili</h4></div>
+                    <i class="fas fa-id-badge text-slate-300"></i>
+                </div>
+                <div class="p-6 border-b border-slate-100 flex justify-between items-center">
+                    <div><span class="text-indigo-600 font-bold">09:00 - 11:00</span><h4 class="font-bold text-lg" id="sch-2">Mada: AI na Maisha ya Chuo</h4><p class="text-slate-500 text-sm" id="sch-2-sub">Mzungumzaji: Scanner OG</p></div>
+                    <i class="fas fa-microchip text-slate-300"></i>
+                </div>
+                <div class="p-6 border-b border-slate-100 flex justify-between items-center">
+                    <div><span class="text-indigo-600 font-bold">11:00 - 12:00</span><h4 class="font-bold text-lg" id="sch-3">Chai na Mapumziko</h4></div>
+                    <i class="fas fa-coffee text-slate-300"></i>
+                </div>
+                <div class="p-6 flex justify-between items-center">
+                    <div><span class="text-indigo-600 font-bold">12:00 - 02:00</span><h4 class="font-bold text-lg" id="sch-4">Ubunifu wa Biashara (Pitching)</h4><p class="text-slate-500 text-sm" id="sch-4-sub">Mzungumzaji: Herieth Innocent</p></div>
+                    <i class="fas fa-lightbulb text-slate-300"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="register" class="py-20 px-6">
+        <div class="max-w-5xl mx-auto bg-white rounded-[3rem] p-10 md:p-16 shadow-2xl border border-slate-100">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl font-extrabold mb-4" id="reg-section-t">Wasiliana Nasi</h2>
+                    <p class="text-slate-500 mb-8" id="reg-section-d">Kwa mawasiliano zaidi au udhamini, usisite kututafuta.</p>
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center"><i class="fas fa-phone"></i></div>
+                            <p class="font-bold">0621728080 / 0655680241</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center"><i class="fas fa-envelope"></i></div>
+                            <p class="font-bold">scannerog@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="space-y-4">
+                    <h3 class="font-bold text-xl mb-4" id="form-title">Jiandikishe Sasa</h3>
+                    <input type="text" id="inp-name" placeholder="Jina Kamili" class="w-full px-6 py-4 bg-slate-50 rounded-2xl border outline-none focus:ring-2 focus:ring-indigo-500">
+                    <input type="email" id="inp-email" placeholder="Barua Pepe" class="w-full px-6 py-4 bg-slate-50 rounded-2xl border outline-none focus:ring-2 focus:ring-indigo-500">
+                    <button type="button" class="w-full bg-indigo-600 text-white font-bold py-5 rounded-2xl hover:bg-indigo-700 transition shadow-lg" id="reg-btn">KAMILISHA USAJILI</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t text-center">
+        <h3 class="text-xl font-black scanner-logo mb-4">SCANNER CYBER OG</h3>
+        <p class="text-slate-400 text-xs font-bold tracking-widest uppercase">© 2026 Tech Summit Event</p>
+    </footer>
+
+    <script>
+        // THEME LOGIC - 100% Fixed
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            const icon = document.getElementById('theme-icon');
+            
+            if(body.classList.contains('dark-mode')) {
+                icon.className = 'fas fa-sun text-yellow-400';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
+        }
+
+        // LANGUAGE LOGIC - 100% Fixed
+        let currentLang = 'sw';
+        const trans = {
+            en: {
+                navAb: "ABOUT", navSch: "SCHEDULE", navSpk: "SPEAKERS",
+                heroTag: "March 14, 2026 • Main Hall",
+                heroT: "Future of Digital Innovation",
+                heroD: "Join tech experts and creative students at the biggest summit of the year at our college.",
+                heroBR: "Register Now", heroBS: "View Schedule",
+                infDtT: "Date", infDtD: "Saturday, March 14, 2026 from 8:00 AM till evening.",
+                infVnT: "Venue", infVnD: "Conference Hall (Main Hall).",
+                infPtT: "Participants", infPtD: "Students, Lecturers, and all tech & business stakeholders.",
+                spkT: "Our Speakers",
+                spk1D: "Specialist in systems and cyber security expert.",
+                spk2D: "Designer of systems that simplify everyday user life.",
+                schT: "Event Schedule",
+                sch1: "Arrival and Registration",
+                sch2: "Topic: AI and College Life", sch2s: "Speaker: Scanner OG",
+                sch3: "Tea and Break",
+                sch4: "Business Innovation (Pitching)", sch4s: "Speaker: Herieth Innocent",
+                regT: "Contact Us", regD: "For more information or sponsorship, feel free to reach out.",
+                frmT: "Register Now", fName: "Full Name", fEmail: "Email Address",
+                regBtn: "COMPLETE REGISTRATION", btnL: "SWA"
+            },
+            sw: {
+                navAb: "KUHUSU", navSch: "RATIBA", navSpk: "WASEMAJI",
+                heroTag: "Machi 14, 2026 • Main Hall",
+                heroT: "Mustakabali wa Ubunifu wa Dijitali",
+                heroD: "Jiunge na wataalamu wa teknolojia na wanafunzi wabunifu katika kongamano kubwa la mwaka chuoni kwetu.",
+                heroBR: "Anza Usajili Sasa", heroBS: "Angalia Ratiba",
+                infDtT: "Tarehe", infDtD: "Jumamosi, Machi 14, 2026 kuanzia saa 2:00 asubuhi mpaka jioni.",
+                infVnT: "Mahali", infVnD: "Ukumbi wa Mikutano (Main Hall).",
+                infPtT: "Washiriki", infPtD: "Wanafunzi, Wahadhiri, na wadau wote wa teknolojia na biashara.",
+                spkT: "Wasemaji Wetu",
+                spk1D: "Mbobezi katika masuala ya mifumo na usalama wa kimtandao.",
+                spk2D: "Mbunifu wa mifumo inayorahisisha maisha ya mtumiaji wa kawaida.",
+                schT: "Ratiba ya Shughuli",
+                sch1: "Kuwasili na Kujisajili",
+                sch2: "Mada: AI na Maisha ya Chuo", sch2s: "Mzungumzaji: Scanner OG",
+                sch3: "Chai na Mapumziko",
+                sch4: "Ubunifu wa Biashara (Pitching)", sch4s: "Mzungumzaji: Herieth Innocent",
+                regT: "Wasiliana Nasi", regD: "Kwa mawasiliano zaidi au udhamini, usisite kututafuta.",
+                frmT: "Jiandikishe Sasa", fName: "Jina Kamili", fEmail: "Barua Pepe",
+                regBtn: "KAMILISHA USAJILI", btnL: "ENG"
+            }
+        };
+
+        function toggleLang() {
+            currentLang = (currentLang === 'sw') ? 'en' : 'sw';
+            const l = trans[currentLang];
+            
+            // Nav
+            document.getElementById('nav-about').innerText = l.navAb;
+            document.getElementById('nav-schedule').innerText = l.navSch;
+            document.getElementById('nav-speakers').innerText = l.navSpk;
+            // Hero
+            document.getElementById('hero-tag').innerText = l.heroTag;
+            document.getElementById('hero-title').innerText = l.heroT;
+            document.getElementById('hero-desc').innerText = l.heroD;
+            document.getElementById('hero-btn-reg').innerText = l.heroBR;
+            document.getElementById('hero-btn-sch').innerText = l.heroBS;
+            // Info
+            document.getElementById('info-date-t').innerText = l.infDtT;
+            document.getElementById('info-date-d').innerText = l.infDtD;
+            document.getElementById('info-venue-t').innerText = l.infVnT;
+            document.getElementById('info-venue-d').innerText = l.infVnD;
+            document.getElementById('info-part-t').innerText = l.infPtT;
+            document.getElementById('info-part-d').innerText = l.infPtD;
+            // Speakers
+            document.getElementById('spk-title').innerText = l.spkT;
+            document.getElementById('spk-1-desc').innerText = l.spk1D;
+            document.getElementById('spk-2-desc').innerText = l.spk2D;
+            // Schedule
+            document.getElementById('sch-title').innerText = l.schT;
+            document.getElementById('sch-1').innerText = l.sch1;
+            document.getElementById('sch-2').innerText = l.sch2;
+            document.getElementById('sch-2-sub').innerText = l.sch2s;
+            document.getElementById('sch-3').innerText = l.sch3;
+            document.getElementById('sch-4').innerText = l.sch4;
+            document.getElementById('sch-4-sub').innerText = l.sch4s;
+            // Contact & Form
+            document.getElementById('reg-section-t').innerText = l.regT;
+            document.getElementById('reg-section-d').innerText = l.regD;
+            document.getElementById('form-title').innerText = l.frmT;
+            document.getElementById('inp-name').placeholder = l.fName;
+            document.getElementById('inp-email').placeholder = l.fEmail;
+            document.getElementById('reg-btn').innerText = l.regBtn;
+            document.getElementById('lang-btn-text').innerText = l.btnL;
+        }
+    </script>
+</body>
+</html>
