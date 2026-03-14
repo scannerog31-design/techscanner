@@ -3,281 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Summit 2026 | Scanner Cyber OG</title>
+    <title>MIRACLE TECH 2026 | SCANNER CYBER OG</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; transition: 0.4s; }
         
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-            transition: background-color 0.4s, color 0.4s;
-        }
+        .permanent-nav { background-color: #1e1b4b !important; color: white !important; }
+        .nav-link { color: white !important; font-weight: 800; font-size: 13px; letter-spacing: 1px; }
+        .nav-link:hover { color: #818cf8 !important; }
 
-        /* DARK MODE - Imeboreshwa */
         .dark-mode { background-color: #0f172a !important; color: #f1f5f9 !important; }
-        .dark-mode nav { background-color: rgba(15, 23, 42, 0.95) !important; border-color: #1e293b !important; }
-        .dark-mode .bg-white { background-color: #1e293b !important; color: white !important; border-color: #334155 !important; }
-        .dark-mode .bg-slate-100 { background-color: #111827 !important; }
-        .dark-mode .text-slate-500, .dark-mode .text-slate-400 { color: #94a3b8 !important; }
-        .dark-mode input { background-color: #0f172a !important; border-color: #334155 !important; color: white; }
-
+        .dark-mode .bg-white { background-color: #1e293b !important; color: white !important; }
+        .dark-mode .bg-slate-50, .dark-mode .bg-slate-100 { background-color: #111827 !important; }
+        
+        .slider-container { width: 100%; height: 400px; border-radius: 2rem; overflow: hidden; position: relative; }
+        .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; object-fit: cover; }
+        .slide.active { opacity: 1; }
+        
         .hero-gradient { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); }
-
-        /* SPEAKER BOXES - Makubwa na ya kuvutia */
-        .speaker-img-container {
-            width: 100%;
-            height: 500px; 
-            border-radius: 2.5rem;
-            overflow: hidden;
-            border: 6px solid #6366f1;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
-        }
-        .speaker-img-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .speaker-img-container:hover img { transform: scale(1.08); }
-
-        .scanner-logo {
-            background: linear-gradient(to right, #4f46e5, #9333ea);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .speaker-img { width: 12rem; height: 12rem; object-fit: cover; border-radius: 50%; border: 8px solid #4f46e5; margin: 0 auto 1.5rem; background-color: #ddd; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
+<body class="bg-slate-50 text-slate-900" id="home">
 
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-extrabold tracking-tighter text-indigo-700">TECH<span class="text-slate-900 dark:text-white">SUMMIT</span></h1>
+    <nav class="fixed w-full z-50 permanent-nav shadow-2xl border-b border-indigo-900">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-black text-indigo-400 uppercase">MIRACLE TECH</h1>
             
-            <div class="flex items-center gap-4">
-                <div class="hidden md:flex gap-8 text-sm font-semibold tracking-wide mr-4">
-                    <a href="#about" id="nav-about" class="hover:text-indigo-600 transition">KUHUSU</a>
-                    <a href="#schedule" id="nav-schedule" class="hover:text-indigo-600 transition">RATIBA</a>
-                    <a href="#speakers" id="nav-speakers" class="hover:text-indigo-600 transition">WASEMAJI</a>
+            <div class="flex items-center gap-6">
+                <div class="hidden md:flex gap-8">
+                    <a href="#home" class="nav-link" id="n-home">HOME</a>
+                    <a href="#about" class="nav-link" id="n-about">ABOUT</a>
+                    <a href="#location" class="nav-link" id="n-loc">LOCATION</a>
+                    <a href="#contact" class="nav-link" id="n-comm">COMMUNICATION</a>
                 </div>
-                <button onclick="toggleLang()" class="bg-indigo-600 text-white text-xs font-bold px-4 py-2 rounded-lg active:scale-90 transition shadow-md">
-                    <span id="lang-btn-text">ENG</span>
-                </button>
-                <button onclick="toggleTheme()" class="bg-slate-100 dark:bg-slate-800 p-2 rounded-lg hover:bg-indigo-100 transition active:scale-90 shadow-md">
-                    <i id="theme-icon" class="fas fa-moon"></i>
-                </button>
+                <button onclick="toggleLang()" class="bg-indigo-600 text-white text-[11px] font-bold px-4 py-2 rounded-full shadow-lg border border-indigo-400" id="lang-btn">ENGLISH</button>
+                <button onclick="toggleTheme()" class="bg-indigo-800 p-2 rounded-full text-white"><i id="theme-icon" class="fas fa-moon"></i></button>
             </div>
         </div>
     </nav>
 
-    <section class="hero-gradient pt-40 pb-24 px-6 text-white text-center">
-        <div class="max-w-4xl mx-auto">
-            <span class="bg-indigo-500/30 text-indigo-200 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest" id="hero-tag">Machi 14, 2026 • Main Hall</span>
-            <h2 id="hero-title" class="text-5xl md:text-7xl font-extrabold my-6 leading-tight">Mustakabali wa Ubunifu wa Dijitali</h2>
-            <p id="hero-desc" class="text-lg text-indigo-100 mb-10 max-w-2xl mx-auto">Jiunge na wataalamu wa teknolojia na wanafunzi wabunifu katika kongamano kubwa la mwaka chuoni kwetu.</p>
-            <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <a href="#register" id="hero-btn-reg" class="bg-white text-indigo-900 px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl transition">Anza Usajili Sasa</a>
-                <a href="#schedule" id="hero-btn-sch" class="border border-white/30 px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition">Angalia Ratiba</a>
+    <section class="hero-gradient pt-40 pb-16 px-6 text-white text-center">
+        <h2 id="hero-title" class="text-5xl md:text-7xl font-extrabold mb-6 uppercase tracking-tighter">Miracle Tech Summit 2026</h2>
+        <p id="hero-desc" class="text-xl text-indigo-100 max-w-3xl mx-auto">Tukio kubwa la teknolojia kwa wanafunzi wa KIUT na wabunifu wote Tanzania.</p>
+    </section>
+
+    <section class="py-12 px-6 max-w-6xl mx-auto">
+        <div class="slider-container shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200" class="slide active">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200" class="slide">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200" class="slide">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&w=1200" class="slide">
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200" class="slide">
+            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200" class="slide">
+        </div>
+    </section>
+
+    <section id="about" class="py-20 px-6 max-w-6xl mx-auto">
+        <h2 id="ab-t" class="text-4xl font-black mb-8 text-center uppercase">Kuhusu Miracle Tech</h2>
+        <div class="grid md:grid-cols-2 gap-12 mb-16">
+            <div class="text-lg text-slate-600 leading-relaxed" id="ab-d">
+                Miracle Tech ni jukwaa la kipekee lililoandaliwa kukuza uelewa wa usalama wa mtandao, akili mnemba (AI), na ubunifu wa mifumo. Tunaamini katika nguvu ya kijana wa KIUT kuwa kiongozi wa tech baadae.
+            </div>
+            <div class="space-y-4">
+                <h3 class="text-2xl font-bold text-indigo-700" id="faida-t">Faida za Kuhudhuria:</h3>
+                <ul class="space-y-3 font-semibold" id="faida-list">
+                    <li><i class="fas fa-check-circle text-green-500 mr-2"></i> Live Cyber Security Demos</li>
+                    <li><i class="fas fa-check-circle text-green-500 mr-2"></i> Networking na Wataalamu</li>
+                    <li><i class="fas fa-check-circle text-green-500 mr-2"></i> Siri za kupata Mitaji ya Tech</li>
+                    <li><i class="fas fa-check-circle text-green-500 mr-2"></i> Vyeti vya Ushiriki</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-20 max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
-        <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100">
-            <i class="fas fa-calendar-day text-3xl text-indigo-600 mb-4"></i>
-            <h3 class="text-xl font-bold mb-2" id="info-date-t">Tarehe</h3>
-            <p class="text-slate-500" id="info-date-d">Jumamosi, Machi 14, 2026 kuanzia saa 2:00 asubuhi mpaka jioni.</p>
-        </div>
-        <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100">
-            <i class="fas fa-map-marker-alt text-3xl text-indigo-600 mb-4"></i>
-            <h3 class="text-xl font-bold mb-2" id="info-venue-t">Mahali</h3>
-            <p class="text-slate-500" id="info-venue-d">Ukumbi wa Mikutano (Main Hall).</p>
-        </div>
-        <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100">
-            <i class="fas fa-users text-3xl text-indigo-600 mb-4"></i>
-            <h3 class="text-xl font-bold mb-2" id="info-part-t">Washiriki</h3>
-            <p class="text-slate-500" id="info-part-d">Wanafunzi, Wahadhiri, na wadau wote wa teknolojia na biashara.</p>
-        </div>
-    </section>
-
-    <section id="speakers" class="py-20 max-w-6xl mx-auto px-6">
-        <h2 class="text-4xl font-extrabold mb-12 text-center" id="spk-title">Wasemaji Wetu</h2>
-        <div class="grid md:grid-cols-2 gap-16">
-            <div class="text-center">
-                <div class="speaker-img-container mb-6">
-                    <img src="sunday.png" alt="Scanner OG" onerror="this.src='https://via.placeholder.com/600x800?text=Scanner+OG'">
+    <section class="py-20 bg-white dark:bg-slate-900 px-6">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-4xl font-black mb-16 uppercase" id="spk-t">Wasemaji Wakuu</h2>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div>
+                    <img src="sunday.PNG" class="speaker-img" alt="Scanner OG">
+                    <h4 class="text-2xl font-bold uppercase">Scanner Cyber OG</h4>
+                    <p class="text-indigo-600 font-bold uppercase text-sm" id="s-1-p">Cyber Security Expert</p>
                 </div>
-                <h4 class="text-3xl font-bold">Scanner OG</h4>
-                <p class="text-indigo-600 font-bold text-xl mb-2">Cyber Security Expert</p>
-                <p class="text-slate-500 max-w-md mx-auto" id="spk-1-desc">Mbobezi katika masuala ya mifumo na usalama wa kimtandao.</p>
-            </div>
-            <div class="text-center">
-                <div class="speaker-img-container mb-6">
-                    <img src="suncity.png" alt="Glory Alfa" onerror="this.src='https://via.placeholder.com/600x800?text=Glory+Alfa'">
+                <div>
+                    <img src="suncity.PNG" class="speaker-img" alt="Glory Alfa">
+                    <h4 class="text-2xl font-bold uppercase">Glory Alfa</h4>
+                    <p class="text-indigo-600 font-bold uppercase text-sm" id="s-2-p">Product Designer</p>
                 </div>
-                <h4 class="text-3xl font-bold">Glory Alfa</h4>
-                <p class="text-indigo-600 font-bold text-xl mb-2">Product Designer</p>
-                <p class="text-slate-500 max-w-md mx-auto" id="spk-2-desc">Mbunifu wa mifumo inayorahisisha maisha ya mtumiaji wa kawaida.</p>
+                <div>
+                    <img src="suncity 2.PNG" class="speaker-img" alt="Herieth Innocent">
+                    <h4 class="text-2xl font-bold uppercase">Herieth Innocent</h4>
+                    <p class="text-indigo-600 font-bold uppercase text-sm" id="s-3-p">Tech Entrepreneur</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="schedule" class="py-20 bg-slate-100 px-6">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl font-extrabold mb-12 text-center" id="sch-title">Ratiba ya Shughuli</h2>
-            <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200">
-                <div class="p-6 border-b border-slate-100 flex justify-between items-center">
-                    <div><span class="text-indigo-600 font-bold">08:00 - 09:00</span><h4 class="font-bold text-lg" id="sch-1">Kuwasili na Kujisajili</h4></div>
-                    <i class="fas fa-id-badge text-slate-300"></i>
-                </div>
-                <div class="p-6 border-b border-slate-100 flex justify-between items-center">
-                    <div><span class="text-indigo-600 font-bold">09:00 - 11:00</span><h4 class="font-bold text-lg" id="sch-2">Mada: AI na Maisha ya Chuo</h4><p class="text-slate-500 text-sm" id="sch-2-sub">Mzungumzaji: Scanner OG</p></div>
-                    <i class="fas fa-microchip text-slate-300"></i>
-                </div>
-                <div class="p-6 border-b border-slate-100 flex justify-between items-center">
-                    <div><span class="text-indigo-600 font-bold">11:00 - 12:00</span><h4 class="font-bold text-lg" id="sch-3">Chai na Mapumziko</h4></div>
-                    <i class="fas fa-coffee text-slate-300"></i>
-                </div>
-                <div class="p-6 flex justify-between items-center">
-                    <div><span class="text-indigo-600 font-bold">12:00 - 02:00</span><h4 class="font-bold text-lg" id="sch-4">Ubunifu wa Biashara (Pitching)</h4><p class="text-slate-500 text-sm" id="sch-4-sub">Mzungumzaji: Herieth Innocent</p></div>
-                    <i class="fas fa-lightbulb text-slate-300"></i>
-                </div>
+            <h2 class="text-4xl font-black text-center mb-16 uppercase" id="sch-t">Ratiba Rasmi</h2>
+            <div class="space-y-4">
+                <div class="bg-white p-6 rounded-2xl flex justify-between items-center shadow-sm"><span class="font-bold">08:00 - 09:00</span><span class="font-bold uppercase" id="r-1">Usajili & Mapokezi</span></div>
+                <div class="bg-indigo-600 text-white p-6 rounded-2xl flex justify-between items-center shadow-md"><span class="font-bold">09:00 - 10:30</span><span class="font-bold uppercase" id="r-2">Live Hacking - Scanner OG</span></div>
+                <div class="bg-white p-6 rounded-2xl flex justify-between items-center border-l-8 border-yellow-500 shadow-sm"><span class="font-bold text-yellow-600">10:30 - 11:30</span><span class="font-bold uppercase" id="r-3">Mapumziko ya Chai & Kula</span></div>
+                <div class="bg-white p-6 rounded-2xl flex justify-between items-center shadow-sm"><span class="font-bold">11:30 - 01:00</span><span class="font-bold uppercase" id="r-4">UI/UX Strategy - Glory Alfa</span></div>
+                <div class="bg-white p-6 rounded-2xl flex justify-between items-center shadow-sm"><span class="font-bold">01:00 - 02:30</span><span class="font-bold uppercase" id="r-5">Tech Pitching - Herieth Innocent</span></div>
             </div>
         </div>
     </section>
 
-    <section id="register" class="py-20 px-6">
-        <div class="max-w-5xl mx-auto bg-white rounded-[3rem] p-10 md:p-16 shadow-2xl border border-slate-100">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 class="text-3xl font-extrabold mb-4" id="reg-section-t">Wasiliana Nasi</h2>
-                    <p class="text-slate-500 mb-8" id="reg-section-d">Kwa mawasiliano zaidi au udhamini, usisite kututafuta.</p>
-                    <div class="space-y-6">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center"><i class="fas fa-phone"></i></div>
-                            <p class="font-bold">0621728080 / 0655680241</p>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center"><i class="fas fa-envelope"></i></div>
-                            <p class="font-bold">scannerog@gmail.com</p>
-                        </div>
-                    </div>
-                </div>
-                <form class="space-y-4">
-                    <h3 class="font-bold text-xl mb-4" id="form-title">Jiandikishe Sasa</h3>
-                    <input type="text" id="inp-name" placeholder="Jina Kamili" class="w-full px-6 py-4 bg-slate-50 rounded-2xl border outline-none focus:ring-2 focus:ring-indigo-500">
-                    <input type="email" id="inp-email" placeholder="Barua Pepe" class="w-full px-6 py-4 bg-slate-50 rounded-2xl border outline-none focus:ring-2 focus:ring-indigo-500">
-                    <button type="button" class="w-full bg-indigo-600 text-white font-bold py-5 rounded-2xl hover:bg-indigo-700 transition shadow-lg" id="reg-btn">KAMILISHA USAJILI</button>
-                </form>
-            </div>
+    <section id="location" class="py-24 px-6 text-center">
+        <div class="max-w-4xl mx-auto bg-indigo-900 text-white p-16 rounded-[4rem] shadow-2xl border-4 border-indigo-700">
+            <h2 class="text-4xl font-black mb-4 uppercase">KIUT MAIN HALL</h2>
+            <p class="text-xl mb-8 uppercase tracking-widest" id="welcome">Wanafunzi na Wadau wote mnakaribishwa!</p>
+            <h3 class="text-5xl font-black mb-10 text-yellow-400 italic">"TEKNOLOJIA NI USHINDI!"</h3>
+            <p class="text-sm font-bold opacity-75 uppercase" id="loc-sub">Gongo la Mboto, Machi 14.</p>
         </div>
     </section>
 
-    <footer class="py-12 border-t text-center">
-        <h3 class="text-xl font-black scanner-logo mb-4">SCANNER CYBER OG</h3>
-        <p class="text-slate-400 text-xs font-bold tracking-widest uppercase">© 2026 Tech Summit Event</p>
+    <section id="contact" class="py-20 px-6 bg-white dark:bg-slate-800 text-center">
+        <h2 class="text-3xl font-black mb-12 uppercase" id="con-t">MAWASILIANO YANGU</h2>
+        <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <div class="p-6 bg-slate-50 dark:bg-slate-700 rounded-3xl font-bold shadow-sm border border-slate-100">+255 621 728 0890</div>
+            <div class="p-6 bg-slate-50 dark:bg-slate-700 rounded-3xl font-bold shadow-sm border border-slate-100">+255 750 557 721</div>
+            <div class="p-6 bg-slate-50 dark:bg-slate-700 rounded-3xl font-bold text-sm shadow-sm border border-slate-100">scannerog31@gmail.com</div>
+        </div>
+        <p class="mt-16 text-2xl font-black uppercase text-indigo-700 tracking-widest" id="welcome-all">WELCOME ALL</p>
+        <p class="mt-4 font-black text-slate-400 uppercase tracking-tighter">BY SCANNER CYBER OG</p>
+    </section>
+
+    <footer class="py-12 border-t text-center bg-slate-50 dark:bg-slate-900">
+        <h3 class="text-xl font-black text-indigo-600 mb-2 uppercase">SCANNER CYBER OG</h3>
+        <p class="text-slate-400 text-xs font-bold uppercase tracking-widest">© 2026 MIRACLE TECH SUMMIT | KIUT</p>
     </footer>
 
     <script>
-        // THEME LOGIC - 100% Fixed
+        // SLIDER
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 3000);
+
+        // THEME
         function toggleTheme() {
-            const body = document.body;
-            body.classList.toggle('dark-mode');
-            const icon = document.getElementById('theme-icon');
-            
-            if(body.classList.contains('dark-mode')) {
-                icon.className = 'fas fa-sun text-yellow-400';
-            } else {
-                icon.className = 'fas fa-moon';
-            }
+            document.body.classList.toggle('dark-mode');
+            document.getElementById('theme-icon').className = document.body.classList.contains('dark-mode') ? 'fas fa-sun text-yellow-400' : 'fas fa-moon';
         }
 
-        // LANGUAGE LOGIC - 100% Fixed
+        // LANGUAGE LOGIC
         let currentLang = 'sw';
-        const trans = {
+        const translations = {
             en: {
-                navAb: "ABOUT", navSch: "SCHEDULE", navSpk: "SPEAKERS",
-                heroTag: "March 14, 2026 • Main Hall",
-                heroT: "Future of Digital Innovation",
-                heroD: "Join tech experts and creative students at the biggest summit of the year at our college.",
-                heroBR: "Register Now", heroBS: "View Schedule",
-                infDtT: "Date", infDtD: "Saturday, March 14, 2026 from 8:00 AM till evening.",
-                infVnT: "Venue", infVnD: "Conference Hall (Main Hall).",
-                infPtT: "Participants", infPtD: "Students, Lecturers, and all tech & business stakeholders.",
-                spkT: "Our Speakers",
-                spk1D: "Specialist in systems and cyber security expert.",
-                spk2D: "Designer of systems that simplify everyday user life.",
-                schT: "Event Schedule",
-                sch1: "Arrival and Registration",
-                sch2: "Topic: AI and College Life", sch2s: "Speaker: Scanner OG",
-                sch3: "Tea and Break",
-                sch4: "Business Innovation (Pitching)", sch4s: "Speaker: Herieth Innocent",
-                regT: "Contact Us", regD: "For more information or sponsorship, feel free to reach out.",
-                frmT: "Register Now", fName: "Full Name", fEmail: "Email Address",
-                regBtn: "COMPLETE REGISTRATION", btnL: "SWA"
+                home: "HOME", about: "ABOUT", loc: "LOCATION", comm: "COMMUNICATION",
+                heroT: "Miracle Tech Summit 2026",
+                heroD: "The biggest technology event for KIUT students and all innovators in Tanzania.",
+                abT: "About Miracle Tech",
+                abD: "Miracle Tech is a unique platform designed to grow understanding of cyber security, AI, and system innovation. We believe in the power of KIUT youth.",
+                faiT: "Benefits of Attending:",
+                faiL: "<li><i class='fas fa-check-circle text-green-500 mr-2'></i> Live Cyber Security Demos</li><li><i class='fas fa-check-circle text-green-500 mr-2'></i> Expert Networking</li><li><i class='fas fa-check-circle text-green-500 mr-2'></i> Tech Funding Secrets</li><li><i class='fas fa-check-circle text-green-500 mr-2'></i> Certificates of Participation</li>",
+                spkT: "Keynote Speakers",
+                schT: "Official Schedule",
+                r1: "Registration & Reception", r2: "Live Hacking - Scanner OG", r3: "Lunch & Tea Break", r4: "UI/UX Strategy - Glory Alfa", r5: "Tech Pitching - Herieth Innocent",
+                wel: "All Students and Stakeholders are welcome!",
+                locS: "Gongo la Mboto, March 14.",
+                conT: "MY CONTACTS",
+                welA: "WELCOME ALL",
+                btn: "KISWAHILI"
             },
             sw: {
-                navAb: "KUHUSU", navSch: "RATIBA", navSpk: "WASEMAJI",
-                heroTag: "Machi 14, 2026 • Main Hall",
-                heroT: "Mustakabali wa Ubunifu wa Dijitali",
-                heroD: "Jiunge na wataalamu wa teknolojia na wanafunzi wabunifu katika kongamano kubwa la mwaka chuoni kwetu.",
-                heroBR: "Anza Usajili Sasa", heroBS: "Angalia Ratiba",
-                infDtT: "Tarehe", infDtD: "Jumamosi, Machi 14, 2026 kuanzia saa 2:00 asubuhi mpaka jioni.",
-                infVnT: "Mahali", infVnD: "Ukumbi wa Mikutano (Main Hall).",
-                infPtT: "Washiriki", infPtD: "Wanafunzi, Wahadhiri, na wadau wote wa teknolojia na biashara.",
-                spkT: "Wasemaji Wetu",
-                spk1D: "Mbobezi katika masuala ya mifumo na usalama wa kimtandao.",
-                spk2D: "Mbunifu wa mifumo inayorahisisha maisha ya mtumiaji wa kawaida.",
-                schT: "Ratiba ya Shughuli",
-                sch1: "Kuwasili na Kujisajili",
-                sch2: "Mada: AI na Maisha ya Chuo", sch2s: "Mzungumzaji: Scanner OG",
-                sch3: "Chai na Mapumziko",
-                sch4: "Ubunifu wa Biashara (Pitching)", sch4s: "Mzungumzaji: Herieth Innocent",
-                regT: "Wasiliana Nasi", regD: "Kwa mawasiliano zaidi au udhamini, usisite kututafuta.",
-                frmT: "Jiandikishe Sasa", fName: "Jina Kamili", fEmail: "Barua Pepe",
-                regBtn: "KAMILISHA USAJILI", btnL: "ENG"
+                home: "HOME", about: "ABOUT", loc: "LOCATION", comm: "COMMUNICATION",
+                heroT: "Miracle Tech Summit 2026",
+                heroD: "Tukio kubwa la teknolojia kwa wanafunzi wa KIUT na wabunifu wote Tanzania.",
+                abT: "Kuhusu Miracle Tech",
+                abD: "Miracle Tech ni jukwaa la kipekee lililoandaliwa kukuza uelewa wa usalama wa mtandao, akili mnemba (AI), na ubunifu wa mifumo.",
+                faiT: "Faida za Kuhudhuria:",
+                faiL: "<li><i class='fas fa-check-circle text-green-500 mr-2'></i> Live Cyber Security Demos</li><li><i class='fas fa-check-circle text-green-500 mr-2'></i> Networking na Wataalamu</li><li><i class='fas fa-check-circle text-green-500 mr-2'></i> Siri za kupata Mitaji ya Tech</li><li><i class='fas fa-check-circle text-green-500 mr-2'></i> Vyeti vya Ushiriki</li>",
+                spkT: "Wasemaji Wakuu",
+                schT: "Ratiba Rasmi",
+                r1: "Usajili & Mapokezi", r2: "Live Hacking - Scanner OG", r3: "Mapumziko ya Chai & Kula", r4: "UI/UX Strategy - Glory Alfa", r5: "Tech Pitching - Herieth Innocent",
+                wel: "Wanafunzi na Wadau wote mnakaribishwa!",
+                locS: "Gongo la Mboto, Machi 14.",
+                conT: "MAWASILIANO YANGU",
+                welA: "WELCOME ALL",
+                btn: "ENGLISH"
             }
         };
 
         function toggleLang() {
-            currentLang = (currentLang === 'sw') ? 'en' : 'sw';
-            const l = trans[currentLang];
-            
-            // Nav
-            document.getElementById('nav-about').innerText = l.navAb;
-            document.getElementById('nav-schedule').innerText = l.navSch;
-            document.getElementById('nav-speakers').innerText = l.navSpk;
-            // Hero
-            document.getElementById('hero-tag').innerText = l.heroTag;
-            document.getElementById('hero-title').innerText = l.heroT;
-            document.getElementById('hero-desc').innerText = l.heroD;
-            document.getElementById('hero-btn-reg').innerText = l.heroBR;
-            document.getElementById('hero-btn-sch').innerText = l.heroBS;
-            // Info
-            document.getElementById('info-date-t').innerText = l.infDtT;
-            document.getElementById('info-date-d').innerText = l.infDtD;
-            document.getElementById('info-venue-t').innerText = l.infVnT;
-            document.getElementById('info-venue-d').innerText = l.infVnD;
-            document.getElementById('info-part-t').innerText = l.infPtT;
-            document.getElementById('info-part-d').innerText = l.infPtD;
-            // Speakers
-            document.getElementById('spk-title').innerText = l.spkT;
-            document.getElementById('spk-1-desc').innerText = l.spk1D;
-            document.getElementById('spk-2-desc').innerText = l.spk2D;
-            // Schedule
-            document.getElementById('sch-title').innerText = l.schT;
-            document.getElementById('sch-1').innerText = l.sch1;
-            document.getElementById('sch-2').innerText = l.sch2;
-            document.getElementById('sch-2-sub').innerText = l.sch2s;
-            document.getElementById('sch-3').innerText = l.sch3;
-            document.getElementById('sch-4').innerText = l.sch4;
-            document.getElementById('sch-4-sub').innerText = l.sch4s;
-            // Contact & Form
-            document.getElementById('reg-section-t').innerText = l.regT;
-            document.getElementById('reg-section-d').innerText = l.regD;
-            document.getElementById('form-title').innerText = l.frmT;
-            document.getElementById('inp-name').placeholder = l.fName;
-            document.getElementById('inp-email').placeholder = l.fEmail;
-            document.getElementById('reg-btn').innerText = l.regBtn;
-            document.getElementById('lang-btn-text').innerText = l.btnL;
+            currentLang = currentLang === 'sw' ? 'en' : 'sw';
+            const t = translations[currentLang];
+            document.getElementById('n-home').innerText = t.home;
+            document.getElementById('n-about').innerText = t.about;
+            document.getElementById('n-loc').innerText = t.loc;
+            document.getElementById('n-comm').innerText = t.comm;
+            document.getElementById('hero-title').innerText = t.heroT;
+            document.getElementById('hero-desc').innerText = t.heroD;
+            document.getElementById('ab-t').innerText = t.abT;
+            document.getElementById('ab-d').innerText = t.abD;
+            document.getElementById('faida-t').innerText = t.faiT;
+            document.getElementById('faida-list').innerHTML = t.faiL;
+            document.getElementById('spk-t').innerText = t.spkT;
+            document.getElementById('sch-t').innerText = t.schT;
+            document.getElementById('r-1').innerText = t.r1;
+            document.getElementById('r-2').innerText = t.r2;
+            document.getElementById('r-3').innerText = t.r3;
+            document.getElementById('r-4').innerText = t.r4;
+            document.getElementById('r-5').innerText = t.r5;
+            document.getElementById('welcome').innerText = t.wel;
+            document.getElementById('loc-sub').innerText = t.locS;
+            document.getElementById('con-t').innerText = t.conT;
+            document.getElementById('welcome-all').innerText = t.welA;
+            document.getElementById('lang-btn').innerText = t.btn;
         }
     </script>
 </body>
